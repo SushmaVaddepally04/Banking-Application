@@ -20,11 +20,11 @@ public class RecordService {
 	private RecordRepository recordRepository;
 	@Autowired
 	private CustomerService cs;
-	public Records saveRecordByAccno(Records r,Long accno) throws CustomerNotFoundException, MinBalanceException, InsufficientFundsException
+	public Records saveRecordByAccno(Records r,Long accno,int recordType) throws CustomerNotFoundException, MinBalanceException, InsufficientFundsException
 	{
 		Customer c=cs.fetchCustomerByAccno(accno);
 		// 1 is withdrawl
-		if(r.getRecordType()==1)
+		if(recordType==1)
 		{
 			double res=c.getBalance()-r.getAmount();
 			if(res>=0)
@@ -32,7 +32,7 @@ public class RecordService {
 			else
 				throw new InsufficientFundsException("InsufficientFunds");
 		}
-		else if(r.getRecordType()==2)
+		else if(recordType==2)
 		{
 			c.setBalance(c.getBalance()+r.getAmount());
 		}

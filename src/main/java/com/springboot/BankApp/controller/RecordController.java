@@ -21,9 +21,9 @@ public class RecordController {
 	@Autowired
 	private RecordService rs;
 	//Saving a record
-	@PostMapping("/record/{accno}")
-	public Records saveRecord(@RequestBody Records r, @PathVariable Long accno ) throws CustomerNotFoundException, MinBalanceException, InsufficientFundsException {
-		return rs.saveRecordByAccno(r,accno);
+	@PostMapping("/record/{accno}/{recordType}")
+	public Records saveRecord(@RequestBody Records r, @PathVariable Long accno,@PathVariable int recordType ) throws CustomerNotFoundException, MinBalanceException, InsufficientFundsException {
+		return rs.saveRecordByAccno(r,accno,recordType);
 	}
 	//Get a record by tid
 	@GetMapping("/getrecord/{tid}")

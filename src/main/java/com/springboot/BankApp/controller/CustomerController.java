@@ -24,6 +24,7 @@ public class CustomerController {
 
 	@PostMapping("/savecustomer")
 	public Customer saveCustomer(@RequestBody Customer customer) throws MinBalanceException {
+		
 		return cs.saveCustomer(customer);
 	}
 
@@ -45,7 +46,7 @@ public class CustomerController {
 	@DeleteMapping("/customer/{accno}")
 	public String deleteCustomer(@PathVariable Long accno) throws CustomerNotFoundException {
 		Long no = cs.deleteCustomer(accno);
-		return "Customer with id " + accno + " deleted";
+		return "Customer with id " + no + " deleted";
 	}
 
 	@PutMapping("/customer/{accno}/{password}")

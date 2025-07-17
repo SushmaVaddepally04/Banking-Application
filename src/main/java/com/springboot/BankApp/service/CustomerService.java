@@ -1,6 +1,7 @@
 package com.springboot.BankApp.service;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,7 +67,7 @@ public class CustomerService {
 		Customer fetched = fetchCustomerByAccno(accno);
 		if (fetched.getAccno().equals(accno)) {
 			if (fetched.getPassword().equals(password)) {
-				return "User Validation Successful";
+				return "Login Successful";
 			}
 			return "Please Enter Correct Password";
 		}
